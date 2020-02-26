@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact index{% endblock %}
+
+{% block body %}
+
+<div class="container"></div>
+
+<div class="row" id="header">
+    <div class="col-12">
+
+
+    </div>
+</div>
+
+
+
+
+ 
+        {% for contact in contacts %}
+ 
+        {# contact card #}
+    <div class="card" style="width:400px" >
+        <div class="row" >
+
+            <div class="col-sm-6" >                
+                  <h4 class="card-title">{{ contact.name }} {{ contact.firstName }}</h4>
+                  <p class="card-text">{{ contact.phoneNumber }}</p>                  
+            </div>
+
+            <div class="col-sm-6">
+                <div class="row" id="icone">
+                    <a href="{{ path('contact_edit', {'id': contact.id}) }}"><i class="fas fa-pen"></i></a>
+                    <a href="{{ path('contact_delete', {'id': contact.id}) }}"><i class="fas fa-times"></i></a>
+                   
+                </div>
+                <img class="card-img" src="{{ asset('/uploads/contact/' ~ contact.photo) }}" alt="profile picture of {{ contact.firstName }}"/>
+                
+            </div>
+            
+        </div>
+    </div>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+</div>
+        </tbody>
+    </table>
+
+    <a href="{{ path('contact_new') }}">Create new</a>
+{% endblock %}

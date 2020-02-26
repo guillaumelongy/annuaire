@@ -1,0 +1,19 @@
+img {
+    height: 50px;
+    width:auto;
+}
+
+.card{
+    background-color:whitesmoke;
+    margin:30px;
+    padding-bottom: 10px;
+   
+}
+
+#icone{
+    text-align: center;
+}
+
+#header{
+    background-color: whitesmoke;
+}
