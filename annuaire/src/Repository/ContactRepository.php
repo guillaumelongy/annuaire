@@ -20,7 +20,7 @@ class ContactRepository extends ServiceEntityRepository
     }
     
     /**
-     * Requête pour afficher le nombre total de contacts
+     * Requête pour retourner le nombre total de contacts
      * @param Contact $contact
      */
     public function nbContact()
@@ -30,7 +30,17 @@ class ContactRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();    
     }
-  
+
+    /**Requête pour retourner la dernière date de création
+     * 
+     */
+    public function lastDateModif()
+    {
+        return $this->createQueryBuilder('d')
+            ->select('max(d.createdAt)')
+            ->getQuery()
+            ->getSingleScalarResult(); 
+    }
 
 
 

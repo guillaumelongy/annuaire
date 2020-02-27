@@ -22,10 +22,11 @@ class ContactController extends AbstractController
      */
     public function index(ContactRepository $contactRepository, Request $request): Response
     {
-        
+       
         return $this->render('contact/index.html.twig', [
             'contacts' => $contactRepository->findAll(),
-            'totalContact' => $contactRepository->nbContact()
+            'totalContact' => $contactRepository->nbContact(),
+            'lastDate' => $contactRepository->lastDateModif()
             
         ]);
         
