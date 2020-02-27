@@ -7,16 +7,19 @@
 <div class="container"></div>
 
 <div class="row" id="header">
-    <div class="col-12">
 
+    <div class="col-sm-8">
+
+        <h4>Nombre de contact : {{ totalContact }}</h4>
 
     </div>
+    <div class="col-sm-4">
+        <a href="{{ path('contact_new') }}"><i class="fas fa-plus-circle" id="bigCircle"></i></a>
+    </div>
+
 </div>
 
 
-
-
- 
         {% for contact in contacts %}
  
         {# contact card #}
@@ -47,7 +50,6 @@
         {% endfor %}
 </div>
         </tbody>
-    </table>
 
-    <a href="{{ path('contact_new') }}">Create new</a>
+
 {% endblock %}

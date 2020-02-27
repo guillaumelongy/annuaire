@@ -17,12 +17,18 @@ class ContactController extends AbstractController
 {
     /**
      * @Route("/", name="contact_index", methods={"GET"})
+     * @param ContactRepository $repository
+     * @param Request $request
      */
-    public function index(ContactRepository $contactRepository): Response
+    public function index(ContactRepository $contactRepository, Request $request): Response
     {
+        
         return $this->render('contact/index.html.twig', [
             'contacts' => $contactRepository->findAll(),
+            'totalContact' => $contactRepository->nbContact()
+            
         ]);
+        
     }
 
     /**
@@ -115,4 +121,7 @@ class ContactController extends AbstractController
 
         return $this->redirectToRoute('contact_index');
     }
+
+
+   
 }

@@ -18,6 +18,21 @@ class ContactRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Contact::class);
     }
+    
+    /**
+     * Requête pour afficher le nombre total de contacts
+     * @param Contact $contact
+     */
+    public function nbContact()
+    {
+        return $this->createQueryBuilder('c')
+            ->select('COUNT(c.id)')
+            ->getQuery()
+            ->getSingleScalarResult();    
+    }
+  
+
+
 
     // /**
     //  * @return Contact[] Returns an array of Contact objects
