@@ -17,13 +17,13 @@
     </div>
     
 </div>
-
+{# contact card #}
 <div class="row">
 
     <div class="col-md-8">
 
 {% for contact in contacts %}
- {# contact card #}
+ 
     <div class="card" style="width:400px" >
         <div class="row" >
 
@@ -53,38 +53,28 @@
     </div>
     {# searchbar #}
     <div class="col-sm-2" id="searchbar">
-        <form action="{{ path('driver_index') }}" method="post">
-            <button type="button">*</button><br>
-            <button type="button">A</button><br>
-            <button type="button">B</button><br>
-            <button type="button">C</button><br>
-            <button type="button">D</button><br>
-            <button type="button">E</button><br>
-            <button type="button">F</button><br>
-            <button type="button">G</button><br>
-            <button type="button">H</button><br>
-            <button type="button">I</button><br>
-            <button type="button">J</button><br>
-            <button type="button">K</button><br>
-            <button type="button">L</button><br>
-            <button type="button">M</button><br>
-        </form>
-    </div>
+
+        <form action="{{ path('contact_index') }}" method="get">
+            <button type="submit">*</button><br>
+            <button type="submit" value='letter:a'>A</button><br>
+            <button type="button" value="b">B</button><br>
+            <button type="button" value="c">C</button><br>
+            <button type="button" value="d">D</button><br>
+            <button type="button" value="e">E</button><br>
+            <button type="button" value="f">F</button><br>
+            <button type="button" value="g">G</button><br>
+            <button type="button" value="h">H</button><br>
+            <button type="button" value="i">I</button><br>
+            <button type="button" value="j">J</button><br>
+            <button type="button" value="k">K</button><br>
+            <button type="button" value="l">L</button><br>
+            <button type="button" value="m">M</button><br>
+        </form>  
+
+    </div> 
 
 </div>
 
-
-
-
-
-
-
-
-
 </div>
-
-
-        </tbody>
-
-
+      
 {% endblock %}

@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\ContactSearch;
+use App\Form\ContactSearchType;
 use App\Form\ContactType;
 use App\Repository\ContactRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,13 +24,13 @@ class ContactController extends AbstractController
      */
     public function index(ContactRepository $contactRepository, Request $request): Response
     {
-
-        return $this->render('contact/index.html.twig', [
+         return $this->render('contact/index.html.twig', [
             'contacts' => $contactRepository->findByFirstLetter('letter'),
+            'contacts' => $contactRepository->findAll(),  
             'totalContact' => $contactRepository->nbContact(),
             'lastDate' => $contactRepository->lastDateModif(), 
         ]);
-        
+
     }
 
     /**
