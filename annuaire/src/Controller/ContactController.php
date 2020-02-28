@@ -22,12 +22,11 @@ class ContactController extends AbstractController
      */
     public function index(ContactRepository $contactRepository, Request $request): Response
     {
-       
+
         return $this->render('contact/index.html.twig', [
-            'contacts' => $contactRepository->findAll(),
+            'contacts' => $contactRepository->findByFirstLetter('letter'),
             'totalContact' => $contactRepository->nbContact(),
-            'lastDate' => $contactRepository->lastDateModif()
-            
+            'lastDate' => $contactRepository->lastDateModif(), 
         ]);
         
     }
@@ -108,19 +107,26 @@ class ContactController extends AbstractController
 
     /**
      * @Route("/{id}", name="contact_delete", methods={"DELETE"})
+     * @param Contact $contact
+     * @param ContactRepository $contactRepository
      */
-    public function delete(Request $request, Contact $contact): Response
-
-    
+    public function delete(Request $request, Contact $contact, ContactRepository $contactRepository): Response
 
     {
         if ($this->isCsrfTokenValid('delete'.$contact->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($contact);
             $entityManager->flush();
+      
         }
+        // essai pour avoir la date de supression d'un contact.
+     /*   return $this->render('contact/index.html.twig', [
+            'lastDate' => $contact->setCreatedAt(new\DateTime), 
+            'totalContact' => $contactRepository->nbContact(),
+            'contacts' => $contactRepository->findAll(),
+        ]);  */
 
-        return $this->redirectToRoute('contact_index');
+        return $this->redirectToRoute('contact_index');  
     }
 
 

@@ -6,23 +6,24 @@
 
 <div class="container"></div>
 
-<div class="row" id="header">
+{# header #}
+<div class="row" id="bigCircle">
 
-    <div class="col-sm-8">
-
-        <h4>Nombre de contact : {{ totalContact }} | Dernière mise à jour : {{ lastDate }}</h4>
-
+    <div class="col-sm-8" >
+       <h4>Nombre de contact : {{ totalContact }} | Dernière mise à jour : {{ lastDate }}</h4>  
     </div>
-    <div class="col-sm-4">
-        <a href="{{ path('contact_new') }}"><i class="fas fa-plus-circle" id="bigCircle"></i></a>
+    <div class="col-sm-2" >
+        <a href="{{ path('contact_new') }}"><i class="fas fa-plus-circle fa-2x" ></i></a>
     </div>
-
+    
 </div>
 
+<div class="row">
 
-        {% for contact in contacts %}
- 
-        {# contact card #}
+    <div class="col-md-8">
+
+{% for contact in contacts %}
+ {# contact card #}
     <div class="card" style="width:400px" >
         <div class="row" >
 
@@ -43,12 +44,46 @@
             
         </div>
     </div>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
+{% else %}
+    <tr>
+        <td colspan="7">no records found</td>
+    </tr>
+{% endfor %}
+
+    </div>
+    {# searchbar #}
+    <div class="col-sm-2" id="searchbar">
+        <form action="{{ path('driver_index') }}" method="post">
+            <button type="button">*</button><br>
+            <button type="button">A</button><br>
+            <button type="button">B</button><br>
+            <button type="button">C</button><br>
+            <button type="button">D</button><br>
+            <button type="button">E</button><br>
+            <button type="button">F</button><br>
+            <button type="button">G</button><br>
+            <button type="button">H</button><br>
+            <button type="button">I</button><br>
+            <button type="button">J</button><br>
+            <button type="button">K</button><br>
+            <button type="button">L</button><br>
+            <button type="button">M</button><br>
+        </form>
+    </div>
+
 </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
         </tbody>
 
 

@@ -31,8 +31,9 @@ class ContactRepository extends ServiceEntityRepository
             ->getSingleScalarResult();    
     }
 
-    /**Requête pour retourner la dernière date de création
-     * 
+    /**
+     * Requête pour retourner la dernière date de création
+     * @param Contact $contact
      */
     public function lastDateModif()
     {
@@ -42,6 +43,18 @@ class ContactRepository extends ServiceEntityRepository
             ->getSingleScalarResult(); 
     }
 
+    /**
+     * Requête pour retourner les contact par leur première lettre
+     * @param Contact $contact
+     */
+    public function findByFirstLetter(string $letter)
+    {
+        $query = $this->createQueryBuilder('g')
+            ->where('g.name LIKE :letter')
+            ->setParameter('letter' , '%'.$letter.'%')
+            ->getQuery();
+        return $query->getResult();            
+    }
 
 
     // /**
